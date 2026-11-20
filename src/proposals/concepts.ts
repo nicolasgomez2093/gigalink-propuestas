@@ -63,6 +63,38 @@ export const concepts = [
     intro: "Conectá tu casa en Tucumán con planes de 50, 100 y 300 Mbps y TV Digital opcional.",
     art: "fibra",
   },
+  {
+    id: "orbita",
+    name: "Órbita Digital",
+    description: "Nueva propuesta: ecosistema visual de señal, fibra y velocidad.",
+    headline: ["Una conexión", "en otra órbita."],
+    intro: "Elegí tu velocidad de fibra, sumá TV Digital y conectá los momentos que importan.",
+    art: "fibra-red",
+  },
+  {
+    id: "negocio",
+    name: "Negocios Conectados",
+    description: "Nueva propuesta: foco en comercios y equipos de trabajo, con hogar a un paso.",
+    headline: ["Tu negocio no", "se desconecta."],
+    intro: "Internet por fibra para cobrar, trabajar y atender a tus clientes en Tucumán.",
+    art: "negocio",
+  },
+  {
+    id: "tucuman",
+    name: "Conectados Acá",
+    description: "Nueva propuesta: cercanía local y cobertura representadas desde Tucumán.",
+    headline: ["La fibra de acá.", "Para llegar más lejos."],
+    intro: "Atención local, consulta de cobertura y planes para tu hogar y tu negocio.",
+    art: "tucuman",
+  },
+  {
+    id: "infinita",
+    name: "Fibra Infinita",
+    description: "Nueva propuesta: interacción visual por capas y movimiento que acompaña el recorrido.",
+    headline: ["Más rápido todo", "lo que conectás."],
+    intro: "Descubrí los planes de Internet por fibra y elegí el que acompaña tu día.",
+    art: "fibra-red",
+  },
 ] as const;
 
 export type Concept = (typeof concepts)[number];

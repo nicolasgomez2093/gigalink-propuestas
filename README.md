@@ -1,6 +1,6 @@
 # Giga Link · Web design proposals
 
-Client review gallery containing the approved reference site and seven alternative
+Client review gallery containing the approved reference site and eleven alternative
 designs. Every version shares the same prices, coverage catalog, and lead form.
 
 Run `npm ci` and `npm run dev` to work locally. Build with `npm run build`.

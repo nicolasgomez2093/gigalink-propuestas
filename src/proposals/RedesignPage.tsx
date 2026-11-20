@@ -87,7 +87,7 @@ function AudienceCards() {
   return (
     <div className="audience-cards">
       <button type="button" className="audience-home" onClick={() => scrollToSection("planes")}>
-        <img src={mediaUrl("hogar")} alt="" width="900" height="600" fetchPriority="high" />
+        <img src={mediaUrl("hogar")} alt="" width="900" height="600" fetchPriority="high" decoding="async" />
         <span><Home aria-hidden="true" /><strong>Para tu hogar</strong><span>Ver Internet y TV Digital</span></span>
       </button>
       <button type="button" className="audience-business" onClick={() => scrollToSection("empresas")}>
@@ -100,7 +100,7 @@ function AudienceCards() {
 
 export function RedesignHero({ concept }: { concept: Redesign }) {
   const { id, headline, intro } = concept;
-  const image = id === "pulso" || id === "casa" || id === "senal" ? concept.art : null;
+  const image = ["pulso", "casa", "senal", "orbita", "negocio", "tucuman", "infinita"].includes(id) ? concept.art : null;
   return (
     <section id="inicio" className="concept-hero">
       <div className="concept-shell hero-layout">
@@ -108,11 +108,12 @@ export function RedesignHero({ concept }: { concept: Redesign }) {
           <p className="hero-category"><Wifi aria-hidden="true" /> {id === "senal" ? "Internet y TV Digital en Tucumán" : "Fibra óptica en Tucumán"}</p>
           <h1>{headline[0]} <span>{headline[1]}</span></h1>
           <p className="hero-intro">{intro}</p>
-          <HeroActions coverageFirst={id === "cerca" || id === "conexion"} />
+          <HeroActions coverageFirst={id === "cerca" || id === "conexion" || id === "tucuman"} />
+          {id === "negocio" && <Button variant="link" className="mt-2 min-h-11 px-0 text-blue-200" onClick={() => scrollToSection("empresas")}>Ver soluciones para empresas</Button>}
         </div>
         {image && (
           <div className="hero-image">
-            <img src={mediaUrl(image)} alt="" width="900" height="600" fetchPriority="high" />
+            <img src={mediaUrl(image)} alt="" width="900" height="600" fetchPriority="high" decoding="async" />
           </div>
         )}
         {id === "claro" && <SpeedBoard />}
@@ -144,7 +145,7 @@ export function BusinessSection({ concept }: { concept: Redesign }) {
               </a>
             </Button>
           </div>
-          {photo && <img className="business-photo" src={mediaUrl("empresas")} alt="" width="900" height="600" loading="lazy" />}
+          {photo && <img className="business-photo" src={mediaUrl("empresas")} alt="" width="900" height="600" loading="lazy" decoding="async" />}
           <ul className="business-uses">
             {businessUses.map(({ icon: Icon, label, detail }) => (
               <li key={label}><Icon aria-hidden="true" /><div><strong>{label}</strong><span>{detail}</span></div></li>
