@@ -1,88 +1,68 @@
-import { MessageCircle, Headphones, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Headphones, MapPin, MessageCircle } from "lucide-react";
+
+const channels = [
+  {
+    label: "Consultar por una instalación",
+    detail: "Planes, precios y condiciones para tu domicilio.",
+    phone: "381 409-2755",
+    number: "5493814092755",
+    message: "Hola Giga Link, quiero consultar por planes e instalación en mi domicilio.",
+    Icon: MessageCircle,
+  },
+  {
+    label: "Pedir ayuda con mi conexión",
+    detail: "Soporte técnico · Lun. a sáb., 9:30 a 20:30",
+    phone: "381 363-7606",
+    number: "5493813637606",
+    message: "Hola Giga Link, necesito soporte para mi conexión.",
+    Icon: Headphones,
+  },
+];
 
 export default function Contact() {
   return (
-    <section
-      id="contacto"
-      className="bg-gradient-contact py-10 text-white sm:py-12"
-    >
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="mb-5 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl">Hablemos</h2>
-          <p className="mt-2 text-sm text-blue-100">
-            Elegí el equipo que necesitás.
-          </p>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-white/15 bg-white/5 p-5 sm:p-6">
-            <div className="flex items-center gap-3">
-              <MessageCircle
-                className="h-5 w-5 text-brand-green"
-                aria-hidden="true"
-              />
-              <h3 className="text-lg font-semibold">Quiero contratar</h3>
-            </div>
-            <p className="mb-4 mt-2 text-sm text-blue-100">
-              Precios, instalación y consultas sobre el servicio.
-            </p>
-            <Button
-              asChild
-              variant="whatsapp"
-              className="min-h-11 w-full rounded-xl"
-            >
-              <a
-                href="https://wa.me/5493814092755?text=Hola%20Giga%20Link%2C%20quiero%20consultar%20por%20el%20servicio"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Escribir a ventas por WhatsApp: 381-4092755"
-              >
-                Hablar con ventas
-              </a>
-            </Button>
-            <p className="mt-3 text-xs text-blue-200">381 409-2755</p>
-          </div>
-          <div className="rounded-2xl border border-white/15 bg-white/5 p-5 sm:p-6">
-            <div className="flex items-center gap-3">
-              <Headphones
-                className="h-5 w-5 text-blue-300"
-                aria-hidden="true"
-              />
-              <h3 className="text-lg font-semibold">Ya soy cliente</h3>
-            </div>
-            <p className="mb-4 mt-2 text-sm text-blue-100">
-              Ayuda técnica y consultas sobre tu conexión.
-            </p>
-            <Button
-              asChild
-              variant="outline"
-              className="min-h-11 w-full rounded-xl border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
-            >
-              <a
-                href="https://wa.me/5493813637606?text=Hola%2C%20necesito%20soporte%20para%20mi%20conexi%C3%B3n%20Giga%20Link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Escribir a soporte técnico por WhatsApp: 381-3637606"
-              >
-                Pedir soporte
-              </a>
-            </Button>
-            <p className="mt-3 text-xs text-blue-200">
-              381 363-7606 · Lun. a sáb., 9:30 a 20:30
+    <section id="contacto" aria-labelledby="contact-title" className="border-t border-slate-200 bg-slate-50 py-12 text-slate-900 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-7 rounded-3xl border border-slate-200 bg-white p-5 sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-center lg:gap-12 lg:p-10">
+          <div>
+            <h2 id="contact-title" className="max-w-sm text-3xl font-bold tracking-tight text-brand-blue-dark sm:text-4xl">
+              ¿Querés conectarte o necesitás ayuda?
+            </h2>
+            <p className="mt-3 max-w-sm text-slate-600">
+              Escribile por WhatsApp al equipo de ventas o al de soporte técnico.
             </p>
           </div>
+          <ul className="divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200">
+            {channels.map(({ label, detail, phone, number, message, Icon }) => (
+              <li key={number}>
+                <a
+                  href={`https://wa.me/${number}?text=${encodeURIComponent(message)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-1 p-4 transition-colors hover:bg-blue-50 focus-visible:outline-offset-[-3px] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:p-5"
+                >
+                  <span className="row-span-2 grid size-10 place-items-center rounded-xl bg-blue-100 text-brand-blue-dark">
+                    <Icon className="size-5" aria-hidden="true" />
+                  </span>
+                  <span className="font-semibold text-brand-blue-dark">{label}</span>
+                  <span className="col-start-2 text-sm text-slate-600 sm:row-start-2">{detail}</span>
+                  <span className="col-start-2 text-sm font-medium tabular-nums text-brand-blue-dark sm:col-start-3 sm:row-start-1">{phone}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="mt-6 flex flex-col gap-2 text-center text-xs leading-relaxed text-blue-200 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:text-left">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-x-5 gap-y-1 px-1 text-sm text-slate-600">
           <a
             href="https://maps.google.com/?q=Eugenio+Mendez+502,+San+Miguel+de+Tucum%C3%A1n"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center justify-center gap-2 underline underline-offset-4 sm:justify-start"
+            className="inline-flex min-h-11 items-center gap-2 font-medium text-brand-blue-dark underline underline-offset-4"
           >
-            <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <MapPin className="size-4 shrink-0" aria-hidden="true" />
             Eugenio Méndez 502, San Miguel de Tucumán
           </a>
-          <p>Oficina: lun. a sáb., 9 a 13 y 17 a 20:30</p>
+          <p>Oficina · Lun. a sáb., 9 a 13 y 17 a 20:30</p>
         </div>
       </div>
     </section>
