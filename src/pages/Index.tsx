@@ -10,6 +10,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import { GalleryLink } from "../proposals/Gallery";
 import { BusinessSection, RedesignHero } from "../proposals/RedesignPage";
 import type { Concept } from "../proposals/concepts";
+import ProposalContact from "../proposals/ProposalContact";
 
 export default function Index({ concept }: { concept: Concept }) {
   const redesign = concept.id === "actual" ? null : concept;
@@ -32,7 +33,7 @@ export default function Index({ concept }: { concept: Concept }) {
         {!coverageFirst && <Coverage />}
         {redesign?.id === "senal" && <BusinessSection concept={redesign} />}
         <FAQ />
-        <Contact />
+        {redesign ? <ProposalContact concept={redesign} /> : <Contact />}
       </main>
       <Footer />
       <GalleryLink />
